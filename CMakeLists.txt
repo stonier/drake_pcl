@@ -30,6 +30,14 @@ find_package(PCL 1.7 REQUIRED)
 message(STATUS "PCL FOUND.................................${PCL_FOUND}")
 message(STATUS "PCL DIRS..................................${PCL_INCLUDE_DIRS}")
 
+
+# Drake's octomap cmake module will find ROS's octomap and fail (different version)
+message(STATUS "octomap_VERSION...........................${octomap_VERSION}")
+
+##############################################################################
+# Build
+##############################################################################
+
 include_directories(
   # ${PROJECT_SOURCE_DIR}/include
   # Can't use this line, because it will point to /usr/include/eigen3 which conflicts with drake's eigen.
