@@ -21,7 +21,11 @@ message(STATUS "EIGEN VERSION.............................${Eigen3_VERSION}")   
 
 message(STATUS "LOOKING FOR...............................PCL")
 
-set(EIGEN_ROOT "${drake_ROOT}/include/eigen3") # ach, doesn't help - still finds system version and inserts that path in PCL_INCLUDE_DIRS
+# Ach, PCL isn't using the find_package(Eigen3) mechanism, it has it's own home brewed logic
+# at the find_eigen macro \in /usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake
+# It is intended that EIGEN_ROOT helps but this fails as it's overridden by pkg_config logic
+# which result in it finding the system version and it inserts that path in PCL_INCLUDE_DIRS
+set(EIGEN_ROOT "${drake_ROOT}/include/eigen3") 
 find_package(PCL 1.7 REQUIRED)
 message(STATUS "PCL FOUND.................................${PCL_FOUND}")
 message(STATUS "PCL DIRS..................................${PCL_INCLUDE_DIRS}")
