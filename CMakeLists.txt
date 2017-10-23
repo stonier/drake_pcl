@@ -21,8 +21,7 @@ message(STATUS "EIGEN VERSION.............................${Eigen3_VERSION}")   
 
 message(STATUS "LOOKING FOR...............................PCL")
 
-# ach, doesn't help it - it still finds the system version and throws that path into PCL_INCLUDE_DIRS
-set(EIGEN_ROOT "${drake_ROOT}/include/eigen3")
+set(EIGEN_ROOT "${drake_ROOT}/include/eigen3") # ach, doesn't help - still finds system version and inserts that path in PCL_INCLUDE_DIRS
 find_package(PCL 1.7 REQUIRED)
 message(STATUS "PCL FOUND.................................${PCL_FOUND}")
 message(STATUS "PCL DIRS..................................${PCL_INCLUDE_DIRS}")
